@@ -469,7 +469,11 @@ See https://docs.expo.io/versions/latest/guides/building-standalone-apps.html`
     const whatToOverrideFiltered = whatToOverride.filter(({ name }) =>
       _.includes(credsMissing, name)
     );
-    const whatToOverrideResult = await prompt(whatToOverrideFiltered);
+    // const whatToOverrideResult = await prompt(whatToOverrideFiltered);
+    const whatToOverrideResult = {
+      pushCert: true,
+      distCert: true
+    };
     const expoManages = { provisioningProfile: true };
 
     const { userCredentialId, serialNumber } = whatToOverrideResult.distCert
@@ -540,7 +544,8 @@ See https://docs.expo.io/versions/latest/guides/building-standalone-apps.html`
         name: 'No, please create a new one',
         value: null,
       });
-      const { distCert } = await prompt(createChooseDistCertPrompt(choices));
+      // const { distCert } = await prompt(createChooseDistCertPrompt(choices));
+      const distCert = null;
       return {
         userCredentialId: distCert && String(distCert.userCredentialId),
         serialNumber: distCert && distCert.serialNumber,
