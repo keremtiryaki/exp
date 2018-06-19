@@ -421,7 +421,11 @@ See https://docs.expo.io/versions/latest/guides/building-standalone-apps.html`
   }
 
   async _validateCredsEnsureAppExists(credsStarter, credsMetadata, justTeamId, isEnterprise) {
-    const appleCredentials = await this.askForAppleCreds(justTeamId);
+    // const appleCredentials = await this.askForAppleCreds(justTeamId);
+    const appleCredentials = {
+      appleId: process.env.APPLE_ID,
+      password: process.env.APPLE_PASSWORD
+    };
     log('Validating Credentials...');
     const checkCredsAttempt = await authFuncs.validateCredentialsProduceTeamId(appleCredentials);
     this._throwIfFailureWithReasonDump(checkCredsAttempt);

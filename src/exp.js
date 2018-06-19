@@ -295,6 +295,7 @@ Command.prototype.asyncActionProjectDir = function(asyncFn, skipProjectValidatio
     // to rerun Doctor because the directory was already checked previously
     // This is relevant for command such as `send`
     if (!skipProjectValidation && (await Project.currentStatus(projectDir)) !== 'running') {
+      console.log('################################################ KEREM BUILD ################################################')
       log('Making sure project is set up correctly...');
       simpleSpinner.start();
       // validate that this is a good projectDir before we try anything else

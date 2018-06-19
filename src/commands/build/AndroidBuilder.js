@@ -157,7 +157,10 @@ export default class AndroidBuilder extends BaseBuilder {
         },
       ];
 
-      const answers = await prompt(questions);
+      // const answers = await prompt(questions);
+      const answers = {
+        uploadKeystore: false
+      };
 
       if (!answers.uploadKeystore) {
         if (this.options.clearCredentials && credentialsExist) {
